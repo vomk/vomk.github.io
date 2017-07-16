@@ -1,0 +1,255 @@
+/* шрифты */
+@font-face {
+ font-family: Natasha;
+ src: url(fonts/Natasha.ttf);
+}
+@font-face {
+ font-family: Oranienbaum;
+ src: url(fonts/Oranienbaum.ttf);
+}
+@font-face {
+ font-family: Anime;
+ src: url(fonts/Anime.ttf);
+}
+@font-face {
+ font-family: Verdana;
+ src: url(fonts/Verdana.ttf);
+}
+/* end шрифты */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Oranienbaum;
+    font-size: 18px;
+}
+
+p {
+    text-align: justify;
+    text-indent: 30px;
+    font-family: Verdana !important;
+    font-size: 16px;
+}
+
+header {
+    display: block;
+    background-image: url(img/bgHead.jpg);
+    background-position: center top;
+    -webkit-background-size: cover;
+    background-size: cover;
+    height: 600px;
+    text-align: center;
+    line-height: 600px;
+}
+
+.about {
+    margin-top: 50px;
+}
+
+@-webkit-keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+       transform: translateX(-5px);
+    }
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+@keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+.logo {
+    font-family: Natasha;
+    font-size: 3em;
+    color: #fff;
+    padding: 15px 60px 10px 60px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 360px) {
+    .logo {
+        font-size: 2em;
+        padding: 15px 20px 10px 25px;
+    }
+}
+
+.logo:hover {
+    -webkit-animation: swing 1s ease;
+    animation: swing 1s ease;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+
+.titleAbout {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    border-right: 5px solid #e0e0e0;
+}
+
+.imgAbout {
+    border-radius: 80px;
+    margin-top: 30px;
+}
+
+.altAbout {
+    font-size: 15;
+}
+
+.titlePortf {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.portf {
+    margin-top: 30px;
+}
+
+.portfMenu {
+    list-style: none;
+    padding: 0;
+}
+
+.portfMenu li {
+    margin: 10px;
+    width: 28%;    
+    display: inline-block;
+
+}
+
+.portfMenu a img {
+    width: 100%;
+}
+
+.anime {
+    font-family: Anime;
+    text-shadow: 0 0 9px #fff;
+    color: #000;
+    background: url('img/bgAnime.jpg') top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-box-shadow: inset 0 0 10px 10px rgb(255, 255, 255);
+    box-shadow: inset 0 0 10px 10px rgb(255, 255, 255);
+    padding-bottom: 40px;
+}
+
+.animeH {
+    text-align: center;
+    font-size: 65px;
+}
+
+.animeSpan {
+    margin-top: 80px;
+    display: block;
+    background-color: rgba(255,255,255,.5);
+    padding: 30px 70px;
+    border-radius: 40px;
+    font-family: Oranienbaum;
+    font-size: 20px;
+}
+
+.red {
+    color: red;
+}
+
+.carousel {
+    background-color: rgba(0,0,0,.1);
+    margin-top: 15px;
+    -webkit-box-shadow: 0 8px 10px 0 rgba(255,255,255,.5);
+    box-shadow: 0 8px 10px 0 rgba(255,255,255,.5);
+}
+
+.item img {
+    width: 450px;
+}
+
+.carousel-control.right, .carousel-control.left {
+    background: transparent !important;
+}
+
+.fantasy {
+    margin: 5px;
+    width: 28%;    
+    display: inline-block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: solid 2px transparent;
+    text-align: center;
+    cursor: pointer;
+}
+
+.fantasy:hover {
+    background-color: #dddddd;
+    border-bottom-color: #4e4e4e;
+}
+
+.fantasy span {
+    font-size: 16px;
+    font-family: Verdana;
+}
+
+.icFa {
+    font-size: 70px;
+    color: #839ee5;
+}
+
+.menuFa {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
