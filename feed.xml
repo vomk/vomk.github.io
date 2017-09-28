@@ -73,7 +73,7 @@ Sitemap: http://вомк.name/sitemap.xml
     
       
         <item>
-          <title>Добавление Disqus в Jekyll</title>
+          <title>Добавление Disqus в Jekyll (trlt)</title>
           <description>&lt;p&gt;Блог Jekyll не поддерживает базы данных. Люди не могут комментировать или обсуждать сообщения в блогах. Disqus - это сторонняя служба, которая может использоваться для снятия этого ограничения.&lt;/p&gt;
 
 &lt;h3 id=&quot;инструкция&quot;&gt;Инструкция&lt;/h3&gt;
