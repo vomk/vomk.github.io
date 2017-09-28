@@ -139,7 +139,7 @@ comments: true
 
 &lt;p&gt;Обратите внимание, что перемещение поста из &lt;strong&gt;_drafts/&lt;/strong&gt; в &lt;strong&gt;_posts/&lt;/strong&gt; может изменить URL-адрес страницы поста. Это приведет к исчезновению комментариев, добавленных в черновик. Инструменты миграции Disqus можно использовать для перемещения комментариев к новому URL-адресу.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;Источник статьи&quot;&gt;http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html&quot;&gt;Источник статьи&lt;/a&gt;&lt;/p&gt;
 </description>
           <pubDate>2017-09-28T00:00:00+03:00</pubDate>
           <link>http://вомк.name/notes/add-disqus-jekyll</link>
