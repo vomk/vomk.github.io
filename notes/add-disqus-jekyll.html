@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+	<title>Добавление Disqus в Jekyll</title>
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@dethcats" />
+<meta name="twitter:title" content="Добавление Disqus в Jekyll" />
+<meta name="twitter:description" content="Статья о том, как добавить комментирование в Jekyll с помощью сервиса Disqus">
+
+<meta name="description" content="Блог про книги, историю, компьютерные технологии, собственные мысли, обозрение новостей, критика и многое другое, с моей головы Статья о том, как добавить комментирование в Jekyll с помощью сервиса Disqus">
+
+<link rel="author" href="https://plus.google.com/u/0/103459417251313685406"/>
+
+<link rel="icon" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/touch-icon.png">
+<link rel="stylesheet" href="/assets/core.css">
+<link rel="canonical" href="/notes/add-disqus-jekyll">
+<link rel="alternate" type="application/atom+xml" title="VOMK Блог" href="/feed.xml" />
+
+
+
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+	</head>
+
+	<body>
+
+		<aside class="logo">
+
+	
+
+	<a href="/">
+		<img src="http://www.gravatar.com/avatar/ae0c7f1c34df533e6fc75514185564ca.png?s=80" class="gravatar">
+	</a>
+	<span class="logo-prompt">На главную</span>
+
+</aside>
+
+
+		<main>
+			<article>
+
+	<div class="center">
+		<h1>Добавление Disqus в Jekyll</h1>
+		<time>September 28, 2017</time>
+   • <a href="https://вомк.name/notes/add-disqus-jekyll#disqus_thread">0 комментариев</a>
+	</div>
+
+	<div class="divider"></div>
+
+	<p>Блог Jekyll не поддерживает базы данных. Люди не могут комментировать или обсуждать сообщения в блогах. Disqus - это сторонняя служба, которая может использоваться для снятия этого ограничения.</p>
+
+<h3 id="инструкция">Инструкция</h3>
+
+<p>Сначала установите Jekyll и зарегистрируйте свой сайт на <a href="https://disqus.com/admin/create/">Disqus</a>.</p>
+
+<p>Добавьте следующий код в <strong>_includes/disqus.html</strong>. Не забудьте изменить строку <strong>this.page.url</strong> на URL вашего блога. Строка <strong>s.src</strong> должна указывать на ваш короткий URL-адрес Disqus.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.comments %}
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"disqus_thread"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">var</span> <span class="nx">disqus_config</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="s2">"http://ВАШАДРЕС{{ page.url }}"</span><span class="p">;</span> <span class="c1">// </span><span class="o">&lt;---</span> <span class="err">здесь</span> <span class="err">ваш</span> <span class="nx">url</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">identifier</span> <span class="o">=</span> <span class="s2">"{{ page.id }}"</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+
+<span class="nx">s</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'//ИМЯНАDISQUS.disqus.com/embed.js'</span><span class="p">;</span> <span class="c1">// </span><span class="o">&lt;---</span> <span class="err">ваше</span> <span class="err">имя</span> <span class="err">на</span> <span class="nx">disqus</span>
+
+<span class="nx">s</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">'data-timestamp'</span><span class="p">,</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">());</span>
+<span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">head</span> <span class="o">||</span> <span class="nx">d</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+<span class="p">})();</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;noscript&gt;</span>Пожалуйста, включите работу JavaScript, что бы заработало <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://disqus.com/?ref_noscript"</span> <span class="na">rel=</span><span class="s">"nofollow"</span><span class="nt">&gt;</span>комментирование с сервиса Disqus.<span class="nt">&lt;/a&gt;&lt;/noscript&gt;</span>
+{% endif %}
+</code></pre></div></div>
+
+<p>Добавьте следующую строку в конец <strong>_layouts/post.html</strong> или в другое место, где вы хотите отображать комментарии.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% include disqus.html %}
+</code></pre></div></div>
+
+<p>Добавьте следующую строку к параметрам MD-страницы, чтобы разрешить комментарии на странице.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>comments: true
+</code></pre></div></div>
+
+<p>Например, параметры этого поста выглядят так.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+title: Добавление Disqus в Jekyll
+update: 2017-09-28 11:26
+descript: Статья о том, как добавить комментирование в Jekyll с помощью сервиса Disqus
+comments: true
+---
+</code></pre></div></div>
+
+<p>При желании, чтобы улучшить отображение комментариев, добавьте следующее в <strong>_layouts/default.html</strong> перед закрывающим тегом <strong>&lt;/body&gt;</strong>. Измените ВАШЕИМЯDISQUS на ваше имя Disqus.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"dsq-count-scr"</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"//ВАШЕИМЯDISQUS.disqus.com/count.js"</span> <span class="k">async</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p>Добавьте <strong>#disqus_thread</strong> в конец URL-адреса, и Disqus посчитает комментарии на странице, на которую указывает ссылка. Например, мой <strong>_layouts/post.html</strong> содержит следующий код. Обратите внимание на количество комментариев в верхней части этого поста.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.comments %} • <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://ВАШАДРЕС{{ page.url }}#disqus_thread"</span><span class="nt">&gt;</span>0 комментариев<span class="nt">&lt;/a&gt;</span>{% endif %}
+</code></pre></div></div>
+
+<p><strong>index.html</strong> содержит следующий код для отображения количества комментариев для каждого поста в списке.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://ВАШАДРЕС{{ post.url }}#disqus_thread"</span><span class="nt">&gt;</span>(0)<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div>
+
+<p>Обратите внимание, что перемещение поста из <strong>_drafts/</strong> в <strong>_posts/</strong> может изменить URL-адрес страницы поста. Это приведет к исчезновению комментариев, добавленных в черновик. Инструменты миграции Disqus можно использовать для перемещения комментариев к новому URL-адресу.</p>
+
+<p><a href="Источник статьи">http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html</a></p>
+
+
+</article>
+
+
+<div id="disqus_thread" class="comment-block"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "http://вомк.name/notes/add-disqus-jekyll"; // <--- здесь ваш url
+this.page.identifier = "/notes/add-disqus-jekyll";
+};
+(function() {
+var d = document, s = d.createElement('script');
+
+s.src = '//vomk.disqus.com/embed.js'; // <--- ваше имя на disqus
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Пожалуйста, включите работу JavaScript, что бы заработало <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментирование с сервиса Disqus.</a></noscript>
+
+
+<div class="page-navigation">
+	
+    <a class="next" href="/notes/jekyll-seo" title="Следующая: SEO для вашего блога на Jekyll (trlt)">&lt;&lt;</a>
+		<span> &middot; </span>
+  
+		<a class="home" href="/" title="На главную">Главная</a>
+  
+		<span> &middot; </span>
+    <a class="prev" href="/notes/first-post" title="Предыдущая: Буковски - мой душевный герой">&gt;&gt;</a>
+  
+</div>
+
+		</main>
+
+		<div class="footer">
+  <span class="block">&copy; 2017 Владик ОМК</span>
+</div>
+
+  <script id="dsq-count-scr" src="//vomk.disqus.com/count.js" async></script>
+	</body>
+
+</html>

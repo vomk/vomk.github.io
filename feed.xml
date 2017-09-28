@@ -73,6 +73,82 @@ Sitemap: http://вомк.name/sitemap.xml
     
       
         <item>
+          <title>Добавление Disqus в Jekyll</title>
+          <description>&lt;p&gt;Блог Jekyll не поддерживает базы данных. Люди не могут комментировать или обсуждать сообщения в блогах. Disqus - это сторонняя служба, которая может использоваться для снятия этого ограничения.&lt;/p&gt;
+
+&lt;h3 id=&quot;инструкция&quot;&gt;Инструкция&lt;/h3&gt;
+
+&lt;p&gt;Сначала установите Jekyll и зарегистрируйте свой сайт на &lt;a href=&quot;https://disqus.com/admin/create/&quot;&gt;Disqus&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Добавьте следующий код в &lt;strong&gt;_includes/disqus.html&lt;/strong&gt;. Не забудьте изменить строку &lt;strong&gt;this.page.url&lt;/strong&gt; на URL вашего блога. Строка &lt;strong&gt;s.src&lt;/strong&gt; должна указывать на ваш короткий URL-адрес Disqus.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% if page.comments %}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;disqus_thread&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;disqus_config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;http://ВАШАДРЕС{{ page.url }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;---&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;здесь&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;ваш&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;identifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;{{ page.id }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'script'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'//ИМЯНАDISQUS.disqus.com/embed.js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;---&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;ваше&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;имя&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;на&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;disqus&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'data-timestamp'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;noscript&amp;gt;&lt;/span&gt;Пожалуйста, включите работу JavaScript, что бы заработало &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://disqus.com/?ref_noscript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nofollow&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;комментирование с сервиса Disqus.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/noscript&amp;gt;&lt;/span&gt;
+{% endif %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Добавьте следующую строку в конец &lt;strong&gt;_layouts/post.html&lt;/strong&gt; или в другое место, где вы хотите отображать комментарии.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% include disqus.html %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Добавьте следующую строку к параметрам MD-страницы, чтобы разрешить комментарии на странице.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;comments: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Например, параметры этого поста выглядят так.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+title: Добавление Disqus в Jekyll
+update: 2017-09-28 11:26
+descript: Статья о том, как добавить комментирование в Jekyll с помощью сервиса Disqus
+comments: true
+---
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;При желании, чтобы улучшить отображение комментариев, добавьте следующее в &lt;strong&gt;_layouts/default.html&lt;/strong&gt; перед закрывающим тегом &lt;strong&gt;&amp;lt;/body&amp;gt;&lt;/strong&gt;. Измените ВАШЕИМЯDISQUS на ваше имя Disqus.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dsq-count-scr&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;//ВАШЕИМЯDISQUS.disqus.com/count.js&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Добавьте &lt;strong&gt;#disqus_thread&lt;/strong&gt; в конец URL-адреса, и Disqus посчитает комментарии на странице, на которую указывает ссылка. Например, мой &lt;strong&gt;_layouts/post.html&lt;/strong&gt; содержит следующий код. Обратите внимание на количество комментариев в верхней части этого поста.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% if page.comments %} • &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://ВАШАДРЕС{{ page.url }}#disqus_thread&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;0 комментариев&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;{% endif %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;index.html&lt;/strong&gt; содержит следующий код для отображения количества комментариев для каждого поста в списке.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://ВАШАДРЕС{{ post.url }}#disqus_thread&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;(0)&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Обратите внимание, что перемещение поста из &lt;strong&gt;_drafts/&lt;/strong&gt; в &lt;strong&gt;_posts/&lt;/strong&gt; может изменить URL-адрес страницы поста. Это приведет к исчезновению комментариев, добавленных в черновик. Инструменты миграции Disqus можно использовать для перемещения комментариев к новому URL-адресу.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;Источник статьи&quot;&gt;http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html&lt;/a&gt;&lt;/p&gt;
+</description>
+          <pubDate>2017-09-28T00:00:00+03:00</pubDate>
+          <link>http://вомк.name/notes/add-disqus-jekyll</link>
+          <guid isPermaLink="true">http://вомк.name/notes/add-disqus-jekyll</guid>
+        </item>
+      
+    
+      
+        <item>
           <title>Буковски - мой душевный герой</title>
           <description>&lt;h2 id=&quot;знакомство-с-литературой&quot;&gt;Знакомство с литературой&lt;/h2&gt;
 
