@@ -2,8 +2,74 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VOMK Блог</title>
-    <description>The Plain is a minimalist Jekyll theme, that's it. Can't say anymore...</description>
-    <link>http://localhost:4000</link>
+    <description>Блог про книги, историю, компьютерные технологии, собственные мысли, обозрение новостей, критика и многое другое, с моей головы</description>
+    <link>http://вомк.name</link>
+    
+      
+        <item>
+          <title>SEO для вашего блога на Jekyll (trlt)</title>
+          <description>&lt;p&gt;Есть несколько простых вещей, которые улучшат SEO вашего блога, вот список изменений, которые можно внести в шаблон:&lt;/p&gt;
+
+&lt;h3 id=&quot;1-не-следует-включать-название-блога-в-тег-заголовка&quot;&gt;1) Не следует включать название блога в тег заголовка&lt;/h3&gt;
+
+&lt;p&gt;Чистый шаблон блога включает название сайта в каждом заголовке страницы:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;
+{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Лучше указывать название блога только на главной и на странице контактов. Я сделал вот так:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% if page.title %}
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;{{ page.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+{% else %}
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;{{ site.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+{% endif %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-используйте-конкретное-мета-описание-для-каждой-страницы-блога&quot;&gt;2) Используйте конкретное мета-описание для каждой страницы блога&lt;/h3&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;description&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{% if page.descript %}{{ site.description }} {{ page.descript }}{% else %}{{ site.description }}{% endif %}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;И потом на каждом создаваемом MD-файле прописывайте:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;descript: Улучшение SEO для вашего блога на Jekyll. Мелкие хаки для улучшения продвижения и индексации
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-используйте-meta-rel--author-для-каждой-страницы-блога&quot;&gt;3) Используйте meta rel = author для каждой страницы блога&lt;/h3&gt;
+
+&lt;p&gt;Свяжите страницы с профилем google+:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;author&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://plus.google.com/u/0/103459417251313685406&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;4-создайте-карту-сайта-для-своего-блога&quot;&gt;4) Создайте карту сайта для своего блога&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://support.google.com/webmasters/answer/156184?hl=ru&quot;&gt;Карта сайта&lt;/a&gt; предоставляет информацию поисковой системе о структуре вашего сайта и страницах, которые она должна индексировать.&lt;/p&gt;
+
+&lt;p&gt;Вы можете легко сгенерировать его, добавив &lt;strong&gt;gem jekyll-sitemap&lt;/strong&gt; в ваш &lt;strong&gt;_config.xml&lt;/strong&gt;, просто следуйте этим &lt;a href=&quot;https://help.github.com/articles/sitemaps-for-github-pages/&quot;&gt;инструкциям&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;5-добавьте-файл-robotstxt&quot;&gt;5) Добавьте файл robots.txt&lt;/h3&gt;
+
+&lt;p&gt;Файл robots.txt предоставляет информацию поисковикам о страницах, которые вы хотите исключить из индексации. Вы также должны указать путь к вашей карте сайта.&lt;/p&gt;
+
+&lt;p&gt;Добавьте аналогичный файл в корень вашего проекта:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# www.robotstxt.org/
+
+User-agent: *
+Sitemap: http://вомк.name/sitemap.xml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;На этом у меня всё. А у вас есть какие-то дополнения по улучшению SEO вашего блога?&lt;/p&gt;
+</description>
+          <pubDate>2017-09-28T00:00:00+03:00</pubDate>
+          <link>http://вомк.name/notes/jekyll-seo</link>
+          <guid isPermaLink="true">http://вомк.name/notes/jekyll-seo</guid>
+        </item>
+      
     
       
         <item>
@@ -25,8 +91,8 @@
 &lt;p&gt;Не бойтесь себя критиковать. Если вы понимаете в чем плохи, значит вы более здравомыслящий, чем думаете.&lt;/p&gt;
 </description>
           <pubDate>2017-09-27T00:00:00+03:00</pubDate>
-          <link>http://localhost:4000/notes/first-post</link>
-          <guid isPermaLink="true">http://localhost:4000/notes/first-post</guid>
+          <link>http://вомк.name/notes/first-post</link>
+          <guid isPermaLink="true">http://вомк.name/notes/first-post</guid>
         </item>
       
     

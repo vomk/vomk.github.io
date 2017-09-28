@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+	<title>SEO для вашего блога на Jekyll (trlt)</title>
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@dethcats" />
+<meta name="twitter:title" content="SEO для вашего блога на Jekyll (trlt)" />
+<meta name="twitter:description" content="Улучшение SEO для вашего блога на Jekyll. Мелкие хаки для улучшения продвижения и индексации">
+
+<meta name="description" content="Блог про книги, историю, компьютерные технологии, собственные мысли, обозрение новостей, критика и многое другое, с моей головы Улучшение SEO для вашего блога на Jekyll. Мелкие хаки для улучшения продвижения и индексации">
+
+<link rel="author" href="https://plus.google.com/u/0/103459417251313685406"/>
+
+<link rel="icon" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/touch-icon.png">
+<link rel="stylesheet" href="/assets/core.css">
+<link rel="canonical" href="/notes/jekyll-seo">
+<link rel="alternate" type="application/atom+xml" title="VOMK Блог" href="/feed.xml" />
+
+
+
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+	</head>
+
+	<body>
+
+		<aside class="logo">
+
+	
+
+	<a href="/">
+		<img src="http://www.gravatar.com/avatar/ae0c7f1c34df533e6fc75514185564ca.png?s=80" class="gravatar">
+	</a>
+	<span class="logo-prompt">На главную</span>
+
+</aside>
+
+
+		<main>
+			<article>
+
+	<div class="center">
+		<h1>SEO для вашего блога на Jekyll (trlt)</h1>
+		<time>September 28, 2017</time>
+	</div>
+
+	<div class="divider"></div>
+
+	<p>Есть несколько простых вещей, которые улучшат SEO вашего блога, вот список изменений, которые можно внести в шаблон:</p>
+
+<h3 id="1-не-следует-включать-название-блога-в-тег-заголовка">1) Не следует включать название блога в тег заголовка</h3>
+
+<p>Чистый шаблон блога включает название сайта в каждом заголовке страницы:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;title&gt;</span>
+{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}
+<span class="nt">&lt;/title&gt;</span>
+</code></pre></div></div>
+
+<p>Лучше указывать название блога только на главной и на странице контактов. Я сделал вот так:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.title %}
+	<span class="nt">&lt;title&gt;</span>{{ page.title }}<span class="nt">&lt;/title&gt;</span>
+{% else %}
+	<span class="nt">&lt;title&gt;</span>{{ site.title }}<span class="nt">&lt;/title&gt;</span>
+{% endif %}
+</code></pre></div></div>
+
+<h3 id="2-используйте-конкретное-мета-описание-для-каждой-страницы-блога">2) Используйте конкретное мета-описание для каждой страницы блога</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"{% if page.descript %}{{ site.description }} {{ page.descript }}{% else %}{{ site.description }}{% endif %}"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>И потом на каждом создаваемом MD-файле прописывайте:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>descript: Улучшение SEO для вашего блога на Jekyll. Мелкие хаки для улучшения продвижения и индексации
+</code></pre></div></div>
+
+<h3 id="3-используйте-meta-rel--author-для-каждой-страницы-блога">3) Используйте meta rel = author для каждой страницы блога</h3>
+
+<p>Свяжите страницы с профилем google+:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"author"</span> <span class="na">href=</span><span class="s">"https://plus.google.com/u/0/103459417251313685406"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h3 id="4-создайте-карту-сайта-для-своего-блога">4) Создайте карту сайта для своего блога</h3>
+
+<p><a href="https://support.google.com/webmasters/answer/156184?hl=ru">Карта сайта</a> предоставляет информацию поисковой системе о структуре вашего сайта и страницах, которые она должна индексировать.</p>
+
+<p>Вы можете легко сгенерировать его, добавив <strong>gem jekyll-sitemap</strong> в ваш <strong>_config.xml</strong>, просто следуйте этим <a href="https://help.github.com/articles/sitemaps-for-github-pages/">инструкциям</a>.</p>
+
+<h3 id="5-добавьте-файл-robotstxt">5) Добавьте файл robots.txt</h3>
+
+<p>Файл robots.txt предоставляет информацию поисковикам о страницах, которые вы хотите исключить из индексации. Вы также должны указать путь к вашей карте сайта.</p>
+
+<p>Добавьте аналогичный файл в корень вашего проекта:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># www.robotstxt.org/
+
+User-agent: *
+Sitemap: http://вомк.name/sitemap.xml
+</code></pre></div></div>
+
+<p>На этом у меня всё. А у вас есть какие-то дополнения по улучшению SEO вашего блога?</p>
+
+
+</article>
+
+<div class="page-navigation">
+	
+		<a class="home" href="/" title="На главную">Главная</a>
+  
+		<span> &middot; </span>
+    <a class="prev" href="/notes/first-post" title="Предыдущая: Буковски - мой душевный герой">&gt;&gt;</a>
+  
+</div>
+
+		</main>
+
+		<div class="footer">
+  <span class="block">&copy; 2017 Владик ОМК</span>
+</div>
+
+
+	</body>
+
+</html>
