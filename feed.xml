@@ -7,6 +7,134 @@
     
       
         <item>
+          <title>Ссылки в социальные сети на Jekyll (trlt)</title>
+          <description>&lt;p&gt;Я видел, что эта ошибка повторяется на многих блогах. Люди не компилируют свои социальные ссылки с помощью Jekyll. Вместо этого они жестко вставляют их в HTML-код. Но, есть лучший способ, и это довольно просто.&lt;/p&gt;
+
+&lt;h3 id=&quot;предпосылки&quot;&gt;Предпосылки&lt;/h3&gt;
+
+&lt;p&gt;Конечно, первым условием является установка Jekyll. Для тех из вас, кто не знает, Jekyll - это простой генератор статического сайта. Он позволяет создавать веб-сайт, не беспокоясь о таких вещах, как базы данных. Второе условие - установить шрифт &lt;strong&gt;Awesome&lt;/strong&gt;. Шрифт &lt;strong&gt;Awesome&lt;/strong&gt; является самым популярным иконочным шрифтом и содержит сотни иконок. Пакет значков полностью открыт, поэтому вы можете использовать его в любом проекте. Чтобы включить их в свой проект, откройте каталог &lt;strong&gt;_includes&lt;/strong&gt; в корневой папке вашего проекта. Затем, используя ваш любимый текстовый редактор, отредактируйте файл &lt;strong&gt;head.html&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Вставте эту строку в нижней части файла:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Вот и все, вы закончили с настройкой=).&lt;/p&gt;
+
+&lt;h3 id=&quot;создание-переменных-для-значков&quot;&gt;Создание переменных для значков&lt;/h3&gt;
+
+&lt;p&gt;Отредактируйте файл &lt;strong&gt;_config.yml&lt;/strong&gt; в корневом каталоге. Там вы увидите две переменные, называемые &lt;strong&gt;twitter_username&lt;/strong&gt; и &lt;strong&gt;github_username&lt;/strong&gt;. Теперь добавьте больше переменных:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;twitter_username:     dethcats
+github_username:      vomk
+linkedin_username:    
+google_plus_username: 103459417251313685406
+facebook_username:    vlad.omelchuck.5
+dribbble_username:    
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Конечно, вам нужно будет заменить мои имена пользователей вашими именами. Если вы не используете некоторые социальные сети, которые я перечислял, просто оставьте имя пользователя пустым и не беспокойтесь об этом.&lt;/p&gt;
+
+&lt;h3 id=&quot;добавление-иконок&quot;&gt;Добавление иконок&lt;/h3&gt;
+
+&lt;p&gt;Найдите подходящее место, где вы хотите показать свои значки. Если вы хотите показать их в футере, отредактируйте файл &lt;strong&gt;footer.html&lt;/strong&gt; из вашей папки &lt;strong&gt;_includes&lt;/strong&gt;. Если вы хотите добавить их где-нибудь в основной части своего сайта, отредактируйте файл &lt;strong&gt;index.html&lt;/strong&gt; из корневой папки.&lt;/p&gt;
+
+&lt;p&gt;После того, как вы нашли место, вы готовы к следующему шагу. Создайте неупорядоченный список, используя тег &lt;strong&gt;&amp;lt;ul&amp;gt; &amp;lt;/ul&amp;gt;&lt;/strong&gt;. Затем скопируйте приведенные ниже коды. Теперь, что эти коды будут делать, они проверют ваш файл &lt;strong&gt;_config.yml&lt;/strong&gt;, который вы редактировали ранее. Если они найдут подходящее имя пользователя, они покажут значок этой социальной сети, связанный с вашим профилем.&lt;/p&gt;
+
+&lt;h3 id=&quot;twitter-код&quot;&gt;Twitter код&lt;/h3&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% if site.twitter_username %}
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://twitter.com/{{ site.twitter_username 
+
+}}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;i&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fa fa-twitter&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt; Twitter
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+{% endif %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;github-код&quot;&gt;GitHub код&lt;/h3&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% if site.github_username %}
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://github.com/{{ site.github_username }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;i&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fa fa-github&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt; GitHub
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+{% endif %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;google-код&quot;&gt;Google+ код&lt;/h3&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% if site.google_plus_username %}
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://plus.google.com/{{ 
+
+site.google_plus_username }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;i&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fa fa-google-plus&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt; Google+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+{% endif %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;linkedin-код&quot;&gt;LinkedIn код&lt;/h3&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% if site.linkedin_username %}
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://linkedin.com/in/{{ 
+
+site.linkedin_username }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;i&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fa fa-linkedin&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt; LinkedIn
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+{% endif %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;facebook-код&quot;&gt;Facebook код&lt;/h3&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% if site.facebook_username %}
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://www.facebook.com/{{ 
+
+site.facebook_username }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;i&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fa fa-facebook&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt; Facebook
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+{% endif %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;dribbble-код&quot;&gt;Dribbble код&lt;/h3&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% if site.dribbble_username %}
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://dribbble.com/{{ site.dribbble_username 
+
+}}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;icon&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;i&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fa fa-dribbble&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt; Dribbble
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+{% endif %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;дальнейшая-настройка-иконок&quot;&gt;Дальнейшая настройка иконок&lt;/h3&gt;
+
+&lt;p&gt;Обратитесь к примерам использования иконок Font Awesome. Вы можете сделать их больше, оживить их, анимировать и многое другое.&lt;/p&gt;
+
+&lt;h3 id=&quot;нужна-помощь&quot;&gt;Нужна помощь?&lt;/h3&gt;
+
+&lt;p&gt;Просто оставьте комментарий ниже. Я буду рад помочь вам.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://blog.r3bl.me/en/simple-social-media-links-jekyll/&quot;&gt;Источник статьи&lt;/a&gt;&lt;/p&gt;
+</description>
+          <pubDate>2017-09-30T00:00:00+03:00</pubDate>
+          <link>http://вомк.name/post/social-links-on-jekyll</link>
+          <guid isPermaLink="true">http://вомк.name/post/social-links-on-jekyll</guid>
+        </item>
+      
+    
+      
+        <item>
           <title>SEO для вашего блога на Jekyll (trlt)</title>
           <description>&lt;p&gt;Есть несколько простых вещей, которые улучшат SEO вашего блога, вот список изменений, которые можно внести в шаблон:&lt;/p&gt;
 
@@ -66,8 +194,8 @@ Sitemap: http://вомк.name/sitemap.xml
 &lt;p&gt;На этом у меня всё. А у вас есть какие-то дополнения по улучшению SEO вашего блога?&lt;/p&gt;
 </description>
           <pubDate>2017-09-28T00:00:00+03:00</pubDate>
-          <link>http://вомк.name/notes/jekyll-seo</link>
-          <guid isPermaLink="true">http://вомк.name/notes/jekyll-seo</guid>
+          <link>http://вомк.name/post/jekyll-seo</link>
+          <guid isPermaLink="true">http://вомк.name/post/jekyll-seo</guid>
         </item>
       
     
@@ -142,8 +270,8 @@ comments: true
 &lt;p&gt;&lt;a href=&quot;http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html&quot;&gt;Источник статьи&lt;/a&gt;&lt;/p&gt;
 </description>
           <pubDate>2017-09-28T00:00:00+03:00</pubDate>
-          <link>http://вомк.name/notes/add-disqus-jekyll</link>
-          <guid isPermaLink="true">http://вомк.name/notes/add-disqus-jekyll</guid>
+          <link>http://вомк.name/post/add-disqus-jekyll</link>
+          <guid isPermaLink="true">http://вомк.name/post/add-disqus-jekyll</guid>
         </item>
       
     
@@ -167,8 +295,8 @@ comments: true
 &lt;p&gt;Не бойтесь себя критиковать. Если вы понимаете в чем плохи, значит вы более здравомыслящий, чем думаете. Пока!&lt;/p&gt;
 </description>
           <pubDate>2017-09-27T00:00:00+03:00</pubDate>
-          <link>http://вомк.name/notes/first-post</link>
-          <guid isPermaLink="true">http://вомк.name/notes/first-post</guid>
+          <link>http://вомк.name/post/first-post</link>
+          <guid isPermaLink="true">http://вомк.name/post/first-post</guid>
         </item>
       
     

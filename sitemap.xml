@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://xn--b1aqfh.name/notes/first-post</loc>
+<loc>http://xn--b1aqfh.name/post/first-post</loc>
 <lastmod>2017-09-27T00:00:00+03:00</lastmod>
 </url>
 <url>
-<loc>http://xn--b1aqfh.name/notes/add-disqus-jekyll</loc>
+<loc>http://xn--b1aqfh.name/post/add-disqus-jekyll</loc>
 <lastmod>2017-09-28T00:00:00+03:00</lastmod>
 </url>
 <url>
-<loc>http://xn--b1aqfh.name/notes/jekyll-seo</loc>
+<loc>http://xn--b1aqfh.name/post/jekyll-seo</loc>
 <lastmod>2017-09-28T00:00:00+03:00</lastmod>
+</url>
+<url>
+<loc>http://xn--b1aqfh.name/post/social-links-on-jekyll</loc>
+<lastmod>2017-09-30T00:00:00+03:00</lastmod>
 </url>
 <url>
 <loc>http://xn--b1aqfh.name/404</loc>

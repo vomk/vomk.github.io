@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+	<title>Ссылки в социальные сети на Jekyll (trlt)</title>
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@dethcats" />
+<meta name="twitter:title" content="Ссылки в социальные сети на Jekyll (trlt)" />
+<meta name="twitter:description" content="Ссылки с икнками в социальные сети на jekyll. Font Awesome в jekyll.">
+
+<meta name="description" content="Блог про книги, историю, компьютерные технологии, собственные мысли, обозрение новостей, критика и многое другое, с моей головы Ссылки с икнками в социальные сети на jekyll. Font Awesome в jekyll.">
+
+<link rel="author" href="https://plus.google.com/u/0/103459417251313685406"/>
+
+<link rel="icon" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/touch-icon.png">
+<link rel="stylesheet" href="/assets/core.css">
+<link rel="canonical" href="/post/social-links-on-jekyll">
+<link rel="alternate" type="application/atom+xml" title="VOMK Блог" href="/feed.xml" />
+
+
+
+
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	</head>
+
+	<body>
+
+		<aside class="logo">
+
+	
+
+	<a href="/">
+		<img src="http://www.gravatar.com/avatar/ae0c7f1c34df533e6fc75514185564ca.png?s=80" alt="ВОМК Логотип" class="gravatar">
+	</a>
+	<span class="logo-prompt">На главную</span>
+
+</aside>
+
+
+		<main>
+			<article>
+
+	<div class="center">
+		<h1>Ссылки в социальные сети на Jekyll (trlt)</h1>
+		<time>September 30, 2017</time>
+   • <a href="http://вомк.name/post/social-links-on-jekyll#disqus_thread">(0)</a>
+	</div>
+
+	<div class="divider"></div>
+
+	<p>Я видел, что эта ошибка повторяется на многих блогах. Люди не компилируют свои социальные ссылки с помощью Jekyll. Вместо этого они жестко вставляют их в HTML-код. Но, есть лучший способ, и это довольно просто.</p>
+
+<h3 id="предпосылки">Предпосылки</h3>
+
+<p>Конечно, первым условием является установка Jekyll. Для тех из вас, кто не знает, Jekyll - это простой генератор статического сайта. Он позволяет создавать веб-сайт, не беспокоясь о таких вещах, как базы данных. Второе условие - установить шрифт <strong>Awesome</strong>. Шрифт <strong>Awesome</strong> является самым популярным иконочным шрифтом и содержит сотни иконок. Пакет значков полностью открыт, поэтому вы можете использовать его в любом проекте. Чтобы включить их в свой проект, откройте каталог <strong>_includes</strong> в корневой папке вашего проекта. Затем, используя ваш любимый текстовый редактор, отредактируйте файл <strong>head.html</strong>.</p>
+
+<p>Вставте эту строку в нижней части файла:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>Вот и все, вы закончили с настройкой=).</p>
+
+<h3 id="создание-переменных-для-значков">Создание переменных для значков</h3>
+
+<p>Отредактируйте файл <strong>_config.yml</strong> в корневом каталоге. Там вы увидите две переменные, называемые <strong>twitter_username</strong> и <strong>github_username</strong>. Теперь добавьте больше переменных:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>twitter_username:     dethcats
+github_username:      vomk
+linkedin_username:    
+google_plus_username: 103459417251313685406
+facebook_username:    vlad.omelchuck.5
+dribbble_username:    
+</code></pre></div></div>
+
+<p>Конечно, вам нужно будет заменить мои имена пользователей вашими именами. Если вы не используете некоторые социальные сети, которые я перечислял, просто оставьте имя пользователя пустым и не беспокойтесь об этом.</p>
+
+<h3 id="добавление-иконок">Добавление иконок</h3>
+
+<p>Найдите подходящее место, где вы хотите показать свои значки. Если вы хотите показать их в футере, отредактируйте файл <strong>footer.html</strong> из вашей папки <strong>_includes</strong>. Если вы хотите добавить их где-нибудь в основной части своего сайта, отредактируйте файл <strong>index.html</strong> из корневой папки.</p>
+
+<p>После того, как вы нашли место, вы готовы к следующему шагу. Создайте неупорядоченный список, используя тег <strong>&lt;ul&gt; &lt;/ul&gt;</strong>. Затем скопируйте приведенные ниже коды. Теперь, что эти коды будут делать, они проверют ваш файл <strong>_config.yml</strong>, который вы редактировали ранее. Если они найдут подходящее имя пользователя, они покажут значок этой социальной сети, связанный с вашим профилем.</p>
+
+<h3 id="twitter-код">Twitter код</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if site.twitter_username %}
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://twitter.com/{{ site.twitter_username 
+
+}}"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-twitter"</span><span class="nt">&gt;&lt;/i&gt;</span> Twitter
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+{% endif %}
+</code></pre></div></div>
+
+<h3 id="github-код">GitHub код</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if site.github_username %}
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/{{ site.github_username }}"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-github"</span><span class="nt">&gt;&lt;/i&gt;</span> GitHub
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+{% endif %}
+</code></pre></div></div>
+
+<h3 id="google-код">Google+ код</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if site.google_plus_username %}
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://plus.google.com/{{ 
+
+site.google_plus_username }}"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-google-plus"</span><span class="nt">&gt;&lt;/i&gt;</span> Google+
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+{% endif %}
+</code></pre></div></div>
+
+<h3 id="linkedin-код">LinkedIn код</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if site.linkedin_username %}
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://linkedin.com/in/{{ 
+
+site.linkedin_username }}"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-linkedin"</span><span class="nt">&gt;&lt;/i&gt;</span> LinkedIn
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+{% endif %}
+</code></pre></div></div>
+
+<h3 id="facebook-код">Facebook код</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if site.facebook_username %}
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://www.facebook.com/{{ 
+
+site.facebook_username }}"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-facebook"</span><span class="nt">&gt;&lt;/i&gt;</span> Facebook
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+{% endif %}
+</code></pre></div></div>
+
+<h3 id="dribbble-код">Dribbble код</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if site.dribbble_username %}
+  <span class="nt">&lt;li&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://dribbble.com/{{ site.dribbble_username 
+
+}}"</span> <span class="na">class=</span><span class="s">"icon"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-dribbble"</span><span class="nt">&gt;&lt;/i&gt;</span> Dribbble
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+{% endif %}
+</code></pre></div></div>
+
+<h3 id="дальнейшая-настройка-иконок">Дальнейшая настройка иконок</h3>
+
+<p>Обратитесь к примерам использования иконок Font Awesome. Вы можете сделать их больше, оживить их, анимировать и многое другое.</p>
+
+<h3 id="нужна-помощь">Нужна помощь?</h3>
+
+<p>Просто оставьте комментарий ниже. Я буду рад помочь вам.</p>
+
+<p><a href="https://blog.r3bl.me/en/simple-social-media-links-jekyll/">Источник статьи</a></p>
+
+
+</article>
+
+
+<div id="disqus_thread" class="comment-block"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "http://вомк.name/post/social-links-on-jekyll"; // <--- здесь ваш url
+this.page.identifier = "/post/social-links-on-jekyll";
+};
+(function() {
+var d = document, s = d.createElement('script');
+
+s.src = '//vomk.disqus.com/embed.js'; // <--- ваше имя на disqus
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Пожалуйста, включите работу JavaScript, что бы заработало <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментирование с сервиса Disqus.</a></noscript>
+
+
+<div class="page-navigation">
+	
+		<a class="home" href="/" title="На главную">Главная</a>
+  
+		<span> &middot; </span>
+    <a class="prev" href="/post/jekyll-seo" title="Предыдущая: SEO для вашего блога на Jekyll (trlt)">&gt;&gt;</a>
+  
+</div>
+
+		</main>
+
+		<div class="footer">
+  <span class="block">&copy; 2017 Владик ОМК</span>
+  <ul class="soc-links">
+    
+      <li>
+        <a href="https://twitter.com/dethcats">
+          <i class="fa fa-twitter"></i> Twitter
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="https://github.com/vomk">
+          <i class="fa fa-github"></i> GitHub
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="https://plus.google.com/103459417251313685406">
+          <i class="fa fa-google-plus"></i> Google+
+        </a>
+      </li>
+    
+    
+    
+      <li>
+        <a href="https://www.facebook.com/vlad.omelchuck.5">
+          <i class="fa fa-facebook"></i> Facebook
+        </a>
+      </li>
+    
+    
+  </ul>
+  <!--bigmir)net TOP 100-->
+  <script type="text/javascript" language="javascript">
+  function BM_Draw(oBM_STAT){
+  document.write('<table cellpadding="0" cellspacing="0" border="0" style="display:inline;margin-right:4px;"><tr><td><div style="font-family:Tahoma;font-size:10px;padding:0px;margin:0px;"><div style="width:7px;float:left;background:url(\'//i.bigmir.net/cnt/samples/default/b54_left.gif\');height:17px;padding-top:2px;background-repeat:no-repeat;"></div><div style="float:left;background:url(\'//i.bigmir.net/cnt/samples/default/b54_center.gif\');text-align:left;height:17px;padding-top:2px;background-repeat:repeat-x;"><a href="http://www.bigmir.net/" target="_blank" style="color:#0000ab;text-decoration:none;">bigmir<span style="color:#ff0000;">)</span>net</a>  <span style="color:#98b4f4;">хиты</span> <span style="color:#426ed2;font:10px Tahoma;">'+oBM_STAT.hits+'</span> <span style="color:#98b4f4;">хосты</span> <span style="color:#426ed2;font:10px Tahoma;">'+oBM_STAT.hosts+'</span></div><div style="width:7px;float: left;background:url(\'//i.bigmir.net/cnt/samples/default/b54_right.gif\');height:17px;padding-top:2px;background-repeat:no-repeat;"></div></div></td></tr></table>');
+  }
+  </script>
+  <script type="text/javascript" language="javascript">
+  bmN=navigator,bmD=document,bmD.cookie='b=b',i=0,bs=[],bm={o:1,v:16951500,s:16951500,t:0,c:bmD.cookie?1:0,n:Math.round((Math.random()* 1000000)),w:0};
+  for(var f=self;f!=f.parent;f=f.parent)bm.w++;
+  try{if(bmN.plugins&&bmN.mimeTypes.length&&(x=bmN.plugins['Shockwave Flash']))bm.m=parseInt(x.description.replace(/([a-zA-Z]|\s)+/,''));
+  else for(var f=3;f<20;f++)if(eval('new ActiveXObject("ShockwaveFlash.ShockwaveFlash.'+f+'")'))bm.m=f}catch(e){;}
+  try{bm.y=bmN.javaEnabled()?1:0}catch(e){;}
+  try{bmS=screen;bm.v^=bm.d=bmS.colorDepth||bmS.pixelDepth;bm.v^=bm.r=bmS.width}catch(e){;}
+  r=bmD.referrer.replace(/^w+:\/\//,'');if(r&&r.split('/')[0]!=window.location.host){bm.f=escape(r).slice(0,400);bm.v^=r.length}
+  bm.v^=window.location.href.length;for(var x in bm) if(/^[ovstcnwmydrf]$/.test(x)) bs[i++]=x+bm[x];
+  bmD.write('<sc'+'ript type="text/javascript" language="javascript" src="//c.bigmir.net/?'+bs.join('&')+'"></sc'+'ript>');
+  </script>
+  <noscript>
+  <a href="http://www.bigmir.net/" target="_blank"><img src="//c.bigmir.net/?v16951500&s16951500&t2" width="88" height="31" alt="bigmir)net TOP 100" title="bigmir)net TOP 100" border="0" /></a>
+  </noscript>
+  <!--bigmir)net TOP 100-->
+</div>
+
+  <script id="dsq-count-scr" src="//vomk.disqus.com/count.js" async></script>
+	</body>
+
+</html>
